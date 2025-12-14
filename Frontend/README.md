@@ -1,4 +1,4 @@
-# Credit Funding Software - Frontend
+# CreditBridge - Frontend
 
 A complete Next.js frontend application for a multi-tenant credit analysis and lending platform.
 

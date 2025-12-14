@@ -5,7 +5,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Credit Funding Software",
+  title: "CreditBridge",
   description: "Multi-tenant credit analysis and lending platform",
 }
 

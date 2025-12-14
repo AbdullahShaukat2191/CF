@@ -68,7 +68,7 @@ export function Sidebar({ onClose }: SidebarProps) {
       style={{ backgroundColor: roleColors?.sidebarBg || "#ffffff" }}
     >
       <div className="flex h-14 sm:h-16 items-center justify-between border-b border-gray-200 px-4 sm:px-6">
-        <h1 className="text-lg sm:text-xl font-bold text-white truncate">Credit Platform</h1>
+        <h1 className="text-lg sm:text-xl font-bold text-white truncate">CreditBridge</h1>
         {/* Close button for mobile */}
         {onClose && (
           <button
@@ -82,7 +82,10 @@ export function Sidebar({ onClose }: SidebarProps) {
       </div>
       <nav className="flex-1 space-y-1 px-2 sm:px-3 py-4 overflow-y-auto">
         {navigation.map((item) => {
-          const isActive = pathname === item.href || pathname?.startsWith(item.href + "/")
+          // For Dashboard, only match exact path. For others, match path or sub-paths
+          const isActive = item.href === "/dashboard" 
+            ? pathname === item.href
+            : pathname === item.href || pathname?.startsWith(item.href + "/")
           return (
             <Link
               key={item.name}
