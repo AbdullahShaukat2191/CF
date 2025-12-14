@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { Sidebar } from "./Sidebar"
 import { Header } from "./Header"
 import { getUser } from "@/lib/auth"
-import { getRoleColors } from "@/lib/roleColors"
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<any>(null)
@@ -15,8 +14,6 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
     setMounted(true)
     setUser(getUser())
   }, [])
-
-  const roleColors = user ? getRoleColors(user.role) : null
 
   return (
     <div className="flex h-screen" style={{ backgroundColor: "#f9fafb" }}>

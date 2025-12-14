@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, DollarSign, FileText, TrendingUp } from "lucide-react"
 import { getUser } from "@/lib/auth"
-import { getRoleDisplayName, getRoleColors } from "@/lib/roleColors"
+import { getRoleDisplayName } from "@/lib/roleColors"
 
 export const dynamic = 'force-dynamic'
 
@@ -17,13 +17,12 @@ export default function DashboardPage() {
         setUser(getUser())
     }, [])
 
-    const roleColors = user ? getRoleColors(user.role) : null
     const dashboardTitle = user ? getRoleDisplayName(user.role) : "Dashboard"
 
     return (
         <div className="space-y-4 sm:space-y-6">
             <div>
-                <h1 className="text-2xl sm:text-3xl font-bold" style={{ color: roleColors?.primary }}>
+                <h1 className="text-2xl sm:text-3xl font-bold" style={{ color: "#8faa76" }}>
                     {dashboardTitle}
                 </h1>
                 <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">

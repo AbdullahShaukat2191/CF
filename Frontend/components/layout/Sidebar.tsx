@@ -19,7 +19,6 @@ import {
 import { cn } from "@/lib/utils"
 import { logout, getUser } from "@/lib/auth"
 import { useRouter } from "next/navigation"
-import { getRoleColors } from "@/lib/roleColors"
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -48,8 +47,6 @@ export function Sidebar({ onClose }: SidebarProps) {
     setUser(getUser())
   }, [])
 
-  const roleColors = user ? getRoleColors(user.role) : null
-
   const handleLogout = () => {
     logout()
     router.push("/login")
@@ -65,7 +62,7 @@ export function Sidebar({ onClose }: SidebarProps) {
   return (
     <div
       className="flex h-full w-64 flex-col border-r border-gray-200 bg-white lg:bg-transparent"
-      style={{ backgroundColor: roleColors?.sidebarBg || "#ffffff" }}
+      style={{ backgroundColor: "#6b8e4f" }}
     >
       <div className="flex h-14 sm:h-16 items-center justify-between border-b border-gray-200 px-4 sm:px-6">
         <h1 className="text-lg sm:text-xl font-bold text-white truncate">CreditBridge</h1>
@@ -83,7 +80,7 @@ export function Sidebar({ onClose }: SidebarProps) {
       <nav className="flex-1 space-y-1 px-2 sm:px-3 py-4 overflow-y-auto">
         {navigation.map((item) => {
           // For Dashboard, only match exact path. For others, match path or sub-paths
-          const isActive = item.href === "/dashboard" 
+          const isActive = item.href === "/dashboard"
             ? pathname === item.href
             : pathname === item.href || pathname?.startsWith(item.href + "/")
           return (
@@ -100,8 +97,8 @@ export function Sidebar({ onClose }: SidebarProps) {
               style={
                 isActive
                   ? {
-                      backgroundColor: roleColors?.primary || "#8faa76",
-                    }
+                    backgroundColor: "#8faa76",
+                  }
                   : {}
               }
             >

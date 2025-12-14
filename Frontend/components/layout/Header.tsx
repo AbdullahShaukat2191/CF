@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { getUser } from "@/lib/auth"
-import { getRoleColors, getRoleDisplayName } from "@/lib/roleColors"
+import { getRoleDisplayName } from "@/lib/roleColors"
 
 interface HeaderProps {
   onMenuClick?: () => void
@@ -18,7 +18,6 @@ export function Header({ onMenuClick }: HeaderProps) {
     setUser(getUser())
   }, [])
 
-  const roleColors = user ? getRoleColors(user.role) : null
   const dashboardTitle = user ? getRoleDisplayName(user.role) : "Dashboard"
 
   return (
@@ -35,7 +34,7 @@ export function Header({ onMenuClick }: HeaderProps) {
           </button>
           <h2 
             className="text-base sm:text-lg font-semibold truncate" 
-            style={{ color: roleColors?.primary }}
+            style={{ color: "#8faa76" }}
           >
             {dashboardTitle}
           </h2>
@@ -56,7 +55,7 @@ export function Header({ onMenuClick }: HeaderProps) {
               <div
                 className="h-8 w-8 sm:h-10 sm:w-10 rounded-full flex items-center justify-center text-white font-semibold text-xs sm:text-sm flex-shrink-0"
                 style={{
-                  backgroundColor: roleColors?.primary || "#8faa76",
+                  backgroundColor: "#8faa76",
                 }}
                 title={`${user.firstName} ${user.lastName}`}
               >
